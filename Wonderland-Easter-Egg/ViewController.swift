@@ -10,16 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var webView: UIWebView!
+    let webView = UIWebView(frame: UIScreen.main.bounds)
     let oops = Oops(frame: UIScreen.main.bounds)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let htmlPath = Bundle.main.path(forResource: "thanks", ofType: "html")
         let htmlString = try? String(contentsOfFile: htmlPath!, encoding: String.Encoding.utf8)
+        webView.frame.size.height = UIScreen.main.bounds.height-64
+        webView.backgroundColor = UIColor.white
+        view.addSubview(webView)
         webView.loadHTMLString(htmlString!, baseURL: nil)
         webView.scrollView.delegate = self
-        
+
         oops.frame.origin.y = UIScreen.main.bounds.size.height
         view.addSubview(oops)
     }
@@ -29,19 +32,17 @@ class ViewController: UIViewController {
 extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let tmp = scrollView.contentOffset.y+scrollView.bounds.size.height-scrollView.contentSize.height
-        
-        let yep: CGFloat = 100
-   
+        let yep: CGFloat = 280
         if (tmp>0) {
             oops.frame.origin.y = UIScreen.main.bounds.height - tmp
             if (tmp>=yep && oops.frame.origin.y != -250) {
-                scrollView.bounces = false
+                scrollView.delegate = nil
                 scrollView.isScrollEnabled = false
+                scrollView.contentInset = UIEdgeInsetsMake(-tmp-(scrollView.contentSize.height-scrollView.bounds.size.height), 0, 0, 0)
                 UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
                     self.oops.frame.origin.y = -250
-                    scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentSize.height, 0, 0, 0)
+                    self.webView.frame.origin.y = -UIScreen.main.bounds.size.height-250
                 }, completion: { (value) in
-                    scrollView.isScrollEnabled = true
                     self.title = "Oops"
                 })
             }
@@ -74,7 +75,7 @@ class Oops: UIView {
         circle1.layer.borderColor = defaultBlueColor.cgColor
         circle0.addSubview(circle1)
         
-        let count = 300;
+        let count = 300
         for i in 1...count {
             let width: CGFloat = 1.5
             let originY = 1.5*(2*CGFloat(i)-1)+circleOriginY+circleWidth

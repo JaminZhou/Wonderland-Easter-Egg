@@ -20,24 +20,9 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VBk-ak-6CT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="VBk-ak-6CT" secondAttribute="trailing" id="HRo-fs-2cX"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="VBk-ak-6CT" secondAttribute="bottom" id="JqV-1X-fJZ"/>
-                            <constraint firstItem="VBk-ak-6CT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gzH-za-bNY"/>
-                            <constraint firstItem="VBk-ak-6CT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hf0-yR-1qL"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Thanks" id="AU6-22-gNS"/>
-                    <connections>
-                        <outlet property="webView" destination="VBk-ak-6CT" id="qez-Ba-Qg5"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
