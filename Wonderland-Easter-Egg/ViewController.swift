@@ -38,7 +38,7 @@ extension ViewController: UIScrollViewDelegate {
             if (tmp>=yep && oops.frame.origin.y != -250) {
                 scrollView.delegate = nil
                 scrollView.isScrollEnabled = false
-                scrollView.contentInset = UIEdgeInsetsMake(-tmp-(scrollView.contentSize.height-scrollView.bounds.size.height), 0, 0, 0)
+                scrollView.contentInset = UIEdgeInsets(top: -tmp-(scrollView.contentSize.height-scrollView.bounds.size.height), left: 0, bottom: 0, right: 0)
                 UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
                     self.oops.frame.origin.y = -250
                     self.webView.frame.origin.y = -UIScreen.main.bounds.size.height-250
@@ -91,8 +91,8 @@ class Oops: UIView {
         jeff.frame.origin.y = 1.5*(2*100-1)+circleOriginY+circleWidth
         addSubview(jeff)
         
-        let attStr0 = NSMutableAttributedString(string: "Jeff designed this App.", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 11, weight: UIFontWeightLight),NSForegroundColorAttributeName: defaultBlueColor])
-        attStr0.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 11, weight: UIFontWeightMedium), range: NSRange(location: 0, length: 4))
+        let attStr0 = NSMutableAttributedString(string: "Jeff designed this App.", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11, weight: UIFont.Weight.light),NSAttributedString.Key.foregroundColor: defaultBlueColor])
+        attStr0.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 11, weight: UIFont.Weight.medium), range: NSRange(location: 0, length: 4))
         let label0 = UILabel()
         label0.attributedText = attStr0
         label0.sizeToFit()
@@ -103,8 +103,8 @@ class Oops: UIView {
         jamin.center = CGPoint(x: frame.size.width/2, y: jeff.center.y+235)
         addSubview(jamin)
 
-        let attStr1 = NSMutableAttributedString(string: "Jamin developed this App.", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 11, weight: UIFontWeightLight),NSForegroundColorAttributeName: UIColor(red: 1, green: 179/255.0, blue: 19/255.0, alpha: 1.0)])
-        attStr1.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 11, weight: UIFontWeightMedium), range: NSRange(location: 0, length: 5))
+        let attStr1 = NSMutableAttributedString(string: "Jamin developed this App.", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 11, weight: UIFont.Weight.light),NSAttributedString.Key.foregroundColor: UIColor(red: 1, green: 179/255.0, blue: 19/255.0, alpha: 1.0)])
+        attStr1.addAttribute(NSAttributedString.Key.font, value: UIFont.systemFont(ofSize: 11, weight: UIFont.Weight.medium), range: NSRange(location: 0, length: 5))
         let label1 = UILabel()
         label1.attributedText = attStr1
         label1.sizeToFit()
